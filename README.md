@@ -39,13 +39,14 @@ Run `ansible-playbook ${TACO_HOME}/taco.yml` from the root of a compliant Terraf
         * `tf_addr` : specify the address to import the resource to
         * `tf_id`   : specify the resource-specific ID to identify that resource being imported
     * Mandatory variables when running `state` terraform workflow phase :
-        * `tf_state_action` : specify the state action wanted (e.g. rm, pull, show...)
-    * Optional variables when running `state` terraform workflow phase :
-        * `tf_addr` : specify the address targeted by the state change (.e.g. when doing a `terraform state rm`, you need to give the target resource adress)
+        * `tf_state_action` : specify the state action wanted. Supported actions : `list`, `show`, `pull`, `rm`.
+        * Semi-mandatory `tf_addr` (can be left to an empty string) : specify the address targeted by the state action  
+          * e.g. for a `terraform state rm ADRESS`, you need to give the targeted resource adress : `tf_addr="aws_iam_user.targeted_user"`
+          * e.g. for a `terraform state [list,pull]`, you need to set `tf_addr=""`.
      * Optional variables when running `output` terraform workflow phase :
         * `tf_name`        : specify the name of the resource to output
         * `tf_output_file` : specify the name of the output file where the `output` result command will be redirect (file will be available on taco layer target directory)
-         
+
 ## Smartly managing variables
 
 The main feature of TACO is to deport variables in YAML files and rely on Ansible variable and templating
