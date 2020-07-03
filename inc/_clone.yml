@@ -12,5 +12,5 @@
     version: "{{ remote_stack_version }}"
 
 - set_fact:
-    layers_dir: "{{ taco_remote_stack_clone_dir.path }}/terraform"
+    layers_dir: "{{ taco_remote_stack_clone_dir.path }}/layers"
     target_dir: "{{ taco_remote_stack_clone_dir.path }}/target"

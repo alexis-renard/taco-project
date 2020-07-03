@@ -6,7 +6,7 @@
   vars:
     pwd: "{{ lookup('env', 'PWD') }}"
     target_dir: "{{ pwd }}/target"
-    layers_dir: "{{ pwd }}/terraform"
+    layers_dir: "{{ pwd }}/layers"
     tf_upgrade: true
     dry_run: false
     backend_reconfigure: true
