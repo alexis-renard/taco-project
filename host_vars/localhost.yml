@@ -15,7 +15,9 @@ tf_cmd_chdir_prefix: "cd {{ src_layer_dir }} &&"
 tf_common_options: >-
   -var-file={{ target_layer_dir }}/taco.tfvars.json
   -state={{ expected_local_tfstate }}
-
+  {% if terraform_target is defined %}
+    -target={{ terraform_target }}
+  {% endif %}
 tf_init_cmd_debug_msg: "{{ tf_cmd_chdir_prefix }} {{ tf_init_cmd }}"
 tf_init_cmd: >-
   terraform init -get=true
